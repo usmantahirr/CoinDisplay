@@ -2,10 +2,19 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
+import { CurrencyChart } from 'components'
+import styled from 'styled-components'
+
+const Heading = styled.h1`
+  margin-bottom: 20px;
+`
 
 const ChartDisplayContainer = (props) => {
   return (
-    <h1>Chart Container {props.rates}</h1>
+    <div>
+      <Heading>Chart Container {props.rates}</Heading>
+      <CurrencyChart />
+    </div>
   )
 }
 

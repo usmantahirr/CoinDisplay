@@ -1,4 +1,3 @@
-// https://github.com/diegohaz/arc/wiki/Storybook
 import React from 'react'
 import { configure, addDecorator } from '@storybook/react'
 import { Provider } from 'react-redux'
