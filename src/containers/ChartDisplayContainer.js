@@ -5,7 +5,7 @@ import { withRouter } from 'react-router'
 import { CurrencyChart } from 'components'
 import styled from 'styled-components'
 import { Button } from 'reactstrap'
-import { fetchCoinDetails } from 'store/actions'
+import { fetchRateHistory } from 'store/actions'
 
 const Heading = styled.h1`
   margin-bottom: 20px;
@@ -24,7 +24,7 @@ class ChartDisplayContainer extends React.Component {
 
   handleClick(e) {
     e.preventDefault()
-    this.props.dispatch(fetchCoinDetails('resource', 'action state'))
+    this.props.dispatch(fetchRateHistory('symbols'))
   }
 
   render() {

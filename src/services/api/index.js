@@ -57,7 +57,7 @@ api.create = (settings = {}) => ({
   setToken(token) {
     this.settings.headers = {
       ...this.settings.headers,
-      Authorization: `Bearer ${token}`,
+      'X-CoinAPI-Key': token,
     }
   },
 
