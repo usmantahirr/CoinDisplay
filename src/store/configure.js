@@ -1,5 +1,6 @@
 import { createStore, applyMiddleware, compose } from 'redux'
 import createSagaMiddleware from 'redux-saga'
+import { createLogger } from 'redux-logger'
 import { isDev, isBrowser } from 'config'
 import middlewares from './middlewares'
 import reducer from './reducer'
@@ -9,12 +10,17 @@ const devtools = isDev && isBrowser && window.devToolsExtension
   ? window.devToolsExtension
   : () => fn => fn
 
+const logger = createLogger({
+  collapsed: true,
+})
+
 const configureStore = (initialState, services = {}) => {
   const sagaMiddleware = createSagaMiddleware()
 
   const enhancers = [
     applyMiddleware(
       ...middlewares,
+      logger,
       sagaMiddleware
     ),
     devtools(),

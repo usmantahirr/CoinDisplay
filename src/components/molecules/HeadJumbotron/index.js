@@ -1,10 +1,12 @@
 import React from 'react'
 import { Jumbotron } from 'reactstrap'
-// import PropTypes from 'prop-types'
 
+const jumbotronStyle = {
+  marginBottom: '0px',
+}
 const HeadJumbotron = () => {
   return (
-    <Jumbotron>
+    <Jumbotron style={jumbotronStyle}>
       <h1>Vodworx Assignment - BTC/ETH Exchange Rates</h1>
     </Jumbotron>
   )

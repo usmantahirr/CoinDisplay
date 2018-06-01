@@ -14,7 +14,7 @@ const Wrapper = styled.div`
 const Content = styled.section`
   width: 100%;
   box-sizing: border-box;
-  margin: 2rem auto;
+  margin: 0.5rem auto;
   max-width: 920px;
 `
 
