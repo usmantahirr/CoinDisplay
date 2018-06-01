@@ -9,11 +9,6 @@ const initialState = {}
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
-    case FETCH_COIN_DETAILS:
-      return {
-        ...state,
-        ...payload,
-      }
     case FETCH_RATE_HISTORY:
       return {
         ...state,

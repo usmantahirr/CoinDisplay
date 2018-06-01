@@ -7,6 +7,7 @@ export function* fetchRateHistory(api, data, { resource, thunk }) {
     const user = yield call([api, api.get], `/${resource}`, data)
     yield put(actions.fetchRateHistorySuccess(resource, user, { data }, thunk))
   } catch (error) {
+    console.log('error occurd while fetching', error)
     yield put(actions.fetchRateHistoryFail(resource, error, { data }, thunk))
   }
 }

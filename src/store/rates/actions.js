@@ -2,19 +2,6 @@ export const FETCH_RATE_HISTORY = 'FETCH_RATE_HISTORY'
 export const FETCH_RATE_HISTORY_SUCCESS = 'FETCH_RATE_HISTORY_SUCCESS'
 export const FETCH_RATE_HISTORY_FAIL = 'FETCH_RATE_HISTORY_FAIL'
 
-export const FETCH_COIN_DETAILS = 'FETCH_COIN_DETAILS'
-
-export const fetchCoinDetails = (resource, data) => {
-  return {
-    type: FETCH_COIN_DETAILS,
-    payload: { data },
-    meta: {
-      resource,
-      thunk: `${resource}Create`,
-    },
-  }
-}
-
 export const fetchRateHistory = (resource, data) => {
   return {
     type: FETCH_RATE_HISTORY,
