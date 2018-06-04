@@ -24,9 +24,7 @@ It will start the development server with [HMR](https://webpack.github.io/docs/h
 
 Now you can open [http://localhost:3000](http://localhost:3000) in browser and start developing.
 
-## Project Structure
-
-
+![Screenshot 2018-06-04 12.04.35](screenshot.png)
 
 ## API Details (CoinAPI.io)
 
