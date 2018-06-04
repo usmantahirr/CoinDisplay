@@ -4,7 +4,9 @@ import * as actions from './actions'
 export function* fetchRateHistory(api, data, { resource, thunk }) {
   try {
     api.setToken('90E70A51-A3F7-4193-85F8-819BD0999527')
-    const user = yield call([api, api.get], `/${resource}`, data)
+    let url = `/${resource}?period_id=${data.period_id}`
+    url += (data.limit) ? `&limit=${data.limit}` : ''
+    const user = yield call([api, api.get], url)
     yield put(actions.fetchRateHistorySuccess(resource, user, { data }, thunk))
   } catch (error) {
     console.log('error occurd while fetching', error)

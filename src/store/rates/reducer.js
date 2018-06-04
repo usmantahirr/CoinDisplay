@@ -5,25 +5,32 @@ import {
   FETCH_RATE_HISTORY_FAIL,
 } from './actions'
 
-const initialState = {}
+const initialState = {
+  query: {},
+  isLoading: false,
+  data: [],
+}
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
     case FETCH_RATE_HISTORY:
       return {
         ...state,
-        ...payload,
+        isLoading: true,
+        query: payload,
       }
     case FETCH_RATE_HISTORY_SUCCESS:
       return {
         ...state,
-        ...payload,
+        isLoading: false,
+        data: payload,
       }
     case FETCH_RATE_HISTORY_FAIL:
       return {
         ...state,
+        isLoading: false,
         error: {
-          message: 'Cant Fetch API',
+          message: payload.message,
           status: '400'
         }
       }

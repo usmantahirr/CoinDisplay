@@ -5,7 +5,7 @@ export const FETCH_RATE_HISTORY_FAIL = 'FETCH_RATE_HISTORY_FAIL'
 export const fetchRateHistory = (resource, data) => {
   return {
     type: FETCH_RATE_HISTORY,
-    payload: { data },
+    payload: data,
     meta: {
       resource,
       thunk: `${resource}Create`,
