@@ -35,7 +35,7 @@ Now you can open [http://localhost:3000](http://localhost:3000) in browser and s
 Symbol ID Would be *BITREX_SPOT_ETH_USD*
 
 **PERIOD_ID:** {TIME}{UNIT}
-**Examples:** 1HRS, 4HRS, 8HRS, 1DAY, 3DAY, 7DAY,1MTH
+**Examples:** 1DAY, 3DAY, 7DAY, 1MTH
 
 #### ETH to USD
 Get BTC to USD Timeseries data

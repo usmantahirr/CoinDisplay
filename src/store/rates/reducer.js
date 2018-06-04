@@ -1,12 +1,10 @@
 import {
-  FETCH_COIN_DETAILS,
   FETCH_RATE_HISTORY,
   FETCH_RATE_HISTORY_SUCCESS,
   FETCH_RATE_HISTORY_FAIL,
 } from './actions'
 
 const initialState = {
-  query: {},
   isLoading: false,
   data: [],
 }
@@ -31,8 +29,8 @@ export default (state = initialState, { type, payload }) => {
         isLoading: false,
         error: {
           message: payload.message,
-          status: '400'
-        }
+          status: '400',
+        },
       }
 
     default:
