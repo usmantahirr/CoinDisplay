@@ -3,13 +3,14 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { CurrencyChart, Select } from 'components'
 import styled from 'styled-components'
-import { Button, Row } from 'reactstrap'
+import { Button, Row, Col } from 'reactstrap'
 import { fetchRateHistory } from 'store/actions'
 
 const Heading = styled.h1`
   margin-bottom: 20px;
 `
 
+// TODO: Move constants to a global place.
 const PERIODS = {
   D1: '1DAY',
   D2: '2DAY',
@@ -33,28 +34,21 @@ class ChartDisplayContainer extends React.Component {
   static propTypes = {
     rates: PropTypes.array,
     isLoading: PropTypes.bool,
-    query: PropTypes.object,
     dispatch: PropTypes.func,
   }
 
   static defaultProps = {
     rates: [],
     isLoading: false,
-    query: {
-      period_id: CONFIG.period_id,
-      limit: CONFIG.limit,
-    },
   }
 
   constructor() {
     super()
-    this.handleClick = this.handleClick.bind(this)
+    this.loadRates = this.loadRates.bind(this)
     this.handleChange = this.handleChange.bind(this)
-
-    // TODO: Change this ETH to constant coming from shared
     this.state = {
-      currencySelection: 'BTC',
-      period: '1DAY',
+      currencySelection: CONFIG.currency,
+      period: CONFIG.period_id,
       isRateLoaded: false,
     }
   }
@@ -62,7 +56,6 @@ class ChartDisplayContainer extends React.Component {
   componentWillMount() {
     this.setState({
       ...this.state,
-      query: this.props.query,
       isLoading: this.props.isLoading,
       rates: this.props.rates,
     })
@@ -84,16 +77,15 @@ class ChartDisplayContainer extends React.Component {
     }
   }
 
-  handleClick(e) {
+  loadRates(e) {
     e.preventDefault()
     this.setState({
       ...this.state,
       isLoading: true,
     })
-
-    this.props.dispatch(fetchRateHistory('ohlcv/BITSTAMP_SPOT_BTC_USD/latest', {
-      period_id: '1DAY',
-      limit: 30,
+    this.props.dispatch(fetchRateHistory(`ohlcv/BITSTAMP_SPOT_${this.state.currencySelection}_USD/latest`, {
+      period_id: this.state.period,
+      limit: CONFIG.limit,
     }))
   }
 
@@ -114,13 +106,13 @@ class ChartDisplayContainer extends React.Component {
 
     if (!this.state.isRateLoaded) {
       return (
-        <div>No Data Found <Button onClick={this.handleClick} color="info">Load Rates</Button></div>
+        <div>No Data Found <Button onClick={this.loadRates} color="info">Load Rates</Button></div>
       )
     }
 
     return (
       <div>
-        <Heading>Chart Container <Button onClick={this.handleClick} color="info">Reload Rates</Button></Heading>
+        <Heading>Chart Container <Button onClick={this.loadRates} color="info">Reload Rates</Button></Heading>
         <Row>
           <Select
             label="Source Currency"
@@ -149,6 +141,12 @@ class ChartDisplayContainer extends React.Component {
           </Select>
         </Row>
         <Row>
+          <Col>
+            <Button outline color="primary" size="md" block onClick={this.loadRates}>Apply Filter</Button>
+          </Col>
+        </Row>
+        <hr />
+        <Row>
           <CurrencyChart data={this.state.rates} />
         </Row>
       </div>
@@ -159,7 +157,6 @@ class ChartDisplayContainer extends React.Component {
 const mapStateToProps = state => ({
   rates: state.rates.data,
   isLoading: state.rates.isLoading,
-  query: state.rates.query,
 })
 
 const mapDispatchToProps = (dispatch) => {
