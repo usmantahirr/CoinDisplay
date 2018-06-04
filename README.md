@@ -12,6 +12,12 @@ $ yarn
 $ yarn run dev
 ```
 
+### 3. Run the Tests
+
+```sh
+$ yarn test
+```
+
 It will start the development server with [HMR](https://webpack.github.io/docs/hot-module-replacement) on top of it.
 
 > [http://localhost:3000](http://localhost:3000) — Development server<br>
