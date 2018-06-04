@@ -115,7 +115,7 @@ describe('api', () => {
       expect(obj.settings).toEqual({
         headers: {
           foo: 'bar',
-          Authorization: 'Bearer token',
+          'X-CoinAPI-Key': 'token',
         },
       })
     })
