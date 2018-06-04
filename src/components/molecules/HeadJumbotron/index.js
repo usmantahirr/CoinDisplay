@@ -7,7 +7,7 @@ const jumbotronStyle = {
 const HeadJumbotron = () => {
   return (
     <Jumbotron style={jumbotronStyle}>
-      <h1>Vodworx Assignment - BTC/ETH Exchange Rates</h1>
+      <h1>BTC/ETH Exchange Rates</h1>
     </Jumbotron>
   )
 }
